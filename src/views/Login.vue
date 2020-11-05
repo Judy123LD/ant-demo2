@@ -40,7 +40,7 @@
 
         <router-link class="register" :to="{ name: 'Register' }"
           >注册账户
-          </router-link>
+        </router-link>
       </a-form-item>
     </a-form>
   </div>
@@ -48,41 +48,37 @@
 
 <script>
 export default {
-    beforeCreate() {
-    this.form = this.$form.createForm(this, { name: 'normal_login' })
+  beforeCreate() {
+    this.form = this.$form.createForm(this, { name: "normal_login" });
   },
-  methods:{
+  methods: {
     // 需要用到的方法
     handleSubmit(e) {
-      e.preventDefault()
+      e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          window.console.log('Received values of form: ', values)
-              //用户名密码传给后端
-              // let res=loginCheck
-              //           ({"username":values.username,
-              //             "password":values.password,
-              //             })
+          window.console.log("Received values of form: ", values);
+          //用户名密码传给后端
+          // let res=loginCheck
+          //           ({"username":values.username,
+          //             "password":values.password,
+          //             })
 
-                res=1 //暂时先写死
-              // 账号密码正确
-              if(res==1){
-                // window.location.href="/overview" 
-                window.console.log('账号密码正确')
-              }
-              //账号密码错误
-              else{
-                  alert("账号或密码错误，请重新输入！")
-              } 
-        
-
-           
-
+          let res = 1; //暂时先写死
+          // 账号密码正确
+          if (res == 1) {
+            // window.location.href="/overview"
+            window.console.log("账号密码正确");
+          }
+          //账号密码错误
+          else {
+            alert("账号或密码错误，请重新输入！");
+          }
         }
-      })
-    },
-}
-}
+      });
+    }
+  }
+};
 </script>
 
 <style>
