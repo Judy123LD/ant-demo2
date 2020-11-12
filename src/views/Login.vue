@@ -1,4 +1,5 @@
 <template>
+<!-- <title>研究生实习实践管理平台</title> -->
   <div align="center">
     <div style="font-size:30px;margin-top:50px">研究生实习实践管理平台</div>
 
@@ -12,7 +13,7 @@
       <a-form-item>
         <a-input
           v-decorator="[
-            'username',
+            'name',
             { rules: [{ required: true, message: '请输入用户名' }] }
           ]"
           placeholder="用户名"
@@ -57,23 +58,35 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
+          
           window.console.log("Received values of form: ", values);
-          //用户名密码传给后端
-          // let res=loginCheck
-          //           ({"username":values.username,
-          //             "password":values.password,
-          //             })
+          this.axios({
+            method:'post',
+            // api 是 http://127.0.0.1:8000 的简写
+            url:'http://localhost:8081/loginIn',
+            data:values
+            }).then(res=>{
+                console.log(res);
+                console.log(res.data);
+                if(res.data=="success"){
+                    self.location.href="/" //跳转到主页面
+                    // window.location.href="/" 
 
-          let res = 1; //暂时先写死
-          // 账号密码正确
-          if (res == 1) {
-            // window.location.href="/overview"
-            window.console.log("账号密码正确");
-          }
-          //账号密码错误
-          else {
-            alert("账号或密码错误，请重新输入！");
-          }
+                    console.log("登陆成功！")
+                }else{
+                    alert("用户名或密码错误，请重新输入！")
+                }
+
+
+
+            }).catch(error=>{
+                console.log(error);
+            })
+
+          // axios.post('http://localhost:8081/loginIn',ruleForm).then(function (response) {
+          //     console.log(response);
+          //           })
+
         }
       });
     }
