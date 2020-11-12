@@ -1,5 +1,4 @@
 <template>
-<!-- <title>研究生实习实践管理平台</title> -->
   <div align="center">
     <div style="font-size:30px;margin-top:50px">研究生实习实践管理平台</div>
 
